@@ -112,6 +112,7 @@ const ChatBot = () => {
   
     // Function to handle the new button click and make a separate API call
     const handleNewButtonClick = () => {
+      setTextInputValue('')
       console.log('textInputValue',textInputValue)
       // Check if the "DASS21" button is active before making the API call
       if (activeButton === 'DASS21') {

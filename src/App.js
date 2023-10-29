@@ -18,19 +18,6 @@ function App() {
   
   const Logintype="";
   return (
-  //   <BrowserRouter>
-  
-  //   <Routes>
-  //     <Route path="/" element={<Landing />} />
-  //     <Route path="AdminHome" element={<AdminHome />} />
-  //     <Route path="EmployeeHistory" element={<EmployeeHistory />} />
-  //     <Route path="ConsultantHome" element={<ConsultantHome />} />
-  //     <Route path="EmployeeDash" element={<EmployeeDash />} />
-  //     <Route path="EmployeeActivities" element={<EmployeeActivities />} />
-  //     <Route path="VoiceDetectionHistory" element={<VoiceDetectionHistory />} />
-  //   </Routes>
-  // </BrowserRouter>
-
   <>
     {
       Logintype === "Admin"  ? <AdminRoutes/> :
