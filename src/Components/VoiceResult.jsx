@@ -7,9 +7,13 @@ const VoiceResult = (props) =>{
     const handleClose = () => {
         props.onClose();
       };
+    console.log('tye',props.res)
+    const data =props.res
+    const depressedSimilarity = data["depressed similarity"];
+    const normalSimilarity = data["normal similarity"];
     
-   
-
+    console.log("Depressed Similarity:", depressedSimilarity);
+    console.log("Normal Similarity:", normalSimilarity);
     return(
         <div className="w-[400px] h-[300px] fixed p-5 flex justify-center items-center z-20 mr-[600px]">
             <div className="w-full h-full bg-white rounded-md p-5 flex flex-col space-y-3 border-gray-300 border-[1px]">
@@ -27,8 +31,8 @@ const VoiceResult = (props) =>{
                         </div>
 
                         <div className='w-full flex flex-col justify-center items-center'>
-                        <p>Depression Similarity Value : value</p>
-                        <p>Normal Similarity Value     : value</p>
+                        <p>Depression Similarity Value : {depressedSimilarity}</p>
+                        <p>Normal Similarity Value     : {normalSimilarity}</p>
                         </div>
 
                 </div>

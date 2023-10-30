@@ -112,16 +112,71 @@ const ChatBot = () => {
   
     // Function to handle the new button click and make a separate API call
     const handleNewButtonClick = () => {
-      setTextInputValue('')
+      // setTextInputValue('')
+      const reqData ={
+        "questions": [
+            {
+                "question": "I was unable to become enthusiastic about anything",
+                "answer": "0"
+            },
+    
+            {
+                "question": "I felt down-hearted and blue",
+                "answer": "1"
+            },
+    
+            {
+                "question": "I felt that life was meaningless",
+                "answer": "2"
+            },
+    
+            {
+                "question": "I felt that I was using a lot of nervous energy",
+                "answer": "3"
+            },
+    
+            {
+                "question": "I experienced trembling (e",
+                "answer": "0"
+            },
+    
+            {
+                "question": "I experienced breathing difficulty (e",
+                "answer": "1"
+            },
+    
+            {
+                "question": "I felt I wasn't worth much as a person",
+                "answer": "2"
+            },
+    
+            {
+                "question": "Do you feel that your team members are approachable and easy to work with?",
+                "answer": "uploads/voice/NO Voice (1).ogg"
+            },
+    
+            {
+                "question": "Do you feel that your team members are generally respectful of one another's opinions and ideas?",
+                "answer": "uploads/voice/NO Voice (2).ogg"
+            },
+    
+            {
+                "question": "Do you feel that your team members are open to constructive feedback from one another?",
+                "answer": "uploads/voice/NO Voice (2).ogg"
+            }
+            ],
+        "user_id": "EMP002"
+    }
       console.log('textInputValue',textInputValue)
       // Check if the "DASS21" button is active before making the API call
       if (activeButton === 'DASS21') {
         // Make the API call specific to the "New Button"
         axios
         .post('http://127.0.0.1:5000/api/dass_bot', {
-          "user" :textInputValue
+          reqData
         })
           .then((response) => {
+  localStorage.setItem('dassValue', JSON.stringify(response.data));
             console.log('New Button API Response:', response.data);
           })
           .catch((error) => {

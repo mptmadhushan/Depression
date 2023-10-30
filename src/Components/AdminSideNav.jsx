@@ -154,7 +154,7 @@ useEffect(() => {
 
 const handleLinkClick = (linkName) => {
   
-if(linkName === "Dashboard" || linkName === "Dashboard" )
+if(linkName === "EmployeeDash" || linkName === "EmployeeDash" )
   {
     setIsSideNavOpen(false);
     setActiveLink(linkName);

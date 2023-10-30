@@ -22,7 +22,7 @@ const Login = () => {
                         <div className="flex w-full relative justify-center items-center ">
                             <WebcamComponent/>
                         </div>
-                        <Link to="/Dashboard">
+                        <Link to="/AdminDashboard">
                             <h3 className="text-white sm:text-[1.5rem]">Login</h3>
                         </Link>
 

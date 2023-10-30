@@ -1,9 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const WebcamComponent = () => {
   const videoRef = useRef(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const constraints = { video: { width: 500, height: 500 } };
 
@@ -20,6 +21,7 @@ const WebcamComponent = () => {
     };
 
     const captureImage = async () => {
+      navigate('/result');
       if (videoRef.current && videoRef.current.srcObject) {
         const canvas = document.createElement('canvas');
         canvas.width = 500;
@@ -52,6 +54,18 @@ const WebcamComponent = () => {
           });
 
           console.log('Image captured and uploaded successfully:', response.data);
+          const role = response.data.user_role
+          if(role==='Employee'){
+            navigate('/EmployeeDash')
+          }
+          if(role==='Consultant'){
+            navigate('/EmployeeDash')
+
+          }
+          if(role==='Admin'){
+            navigate('/EmployeeDash')
+
+          }
         } catch (error) {
           console.error('Error uploading image:', error);
         }

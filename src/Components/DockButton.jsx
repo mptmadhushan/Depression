@@ -8,7 +8,10 @@ import axios from 'axios';
 const DockButton = () => {
   const [isButtonsVisible, setIsButtonsVisible] = useState(false);
   const fileInputRef = useRef(null);
-
+const [respo, setRespo] = useState({
+  "depressed similarity": "0.81",
+  "normal similarity": "0.19"
+})
   const toggleButtons = () => {
     setIsButtonsVisible(!isButtonsVisible);
   };
@@ -39,6 +42,7 @@ const DockButton = () => {
         },
       })
       .then((response) => {
+        setRespo(response.data)
         // Handle the response from the API
         console.log('API Response:', response.data);
       })
@@ -66,7 +70,7 @@ const closeViewResult = () => {
 
   return (
     <div className="flex flex-row justify-center items-center relative ">
-       {isViewResultVisible && <VoiceResult  onClose={closeViewResult}  />}
+       {isViewResultVisible && <VoiceResult  onClose={closeViewResult} res={respo} />}
 
       {isButtonsVisible && (
         <div className="bg-[#5C3BB9] bg-opacity-40 absolute mr-[100px] w-[100px] h-[200px] flex  DockNavigator ">
