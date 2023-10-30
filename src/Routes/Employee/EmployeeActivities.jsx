@@ -20,12 +20,13 @@ const EmployeeActivities = () => {
   );
 
   const handleApiCall = async () => {
-    const items = JSON.parse(localStorage.getItem("items"));
+    const items = JSON.parse(localStorage.getItem("dassValue"));
+    console.log('items--',items)
     const postData = {
       Age: 20,
       Gender: "Female",
-      "Severity Level": "mentalSeverity",
-      Emotion: "mood",
+      "Severity Level": items.DassTest.anxiety_level,
+      Emotion: "Sad",
     };
 
     axios
