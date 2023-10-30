@@ -18,7 +18,7 @@ const ChatBot = () => {
       setIsChatOpen(!isChatOpen);
     };
     const [activeButton, setActiveButton] = useState(null);
-
+    const [botRes,setBotres]= useState('')
     const [botImageIndex, setBotImageIndex] = useState(0);
     const botImages = [bot1, bot2, bot3, bot4, bot5];
   
@@ -188,8 +188,9 @@ const ChatBot = () => {
       } else{
         // Make the API call specific to the "New Button"
         axios
-          .get('http://127.0.0.1:5000/api/nlp_bot')
+          .post('http://127.0.0.1:5000/api/nlp_bot',{user:textInputValue})
           .then((response) => {
+            setBotres(response.data.response)
             console.log('New Button API Response:', response.data);
           })
           .catch((error) => {
@@ -223,8 +224,8 @@ const ChatBot = () => {
         Chat Agent
       </button>
 
-                <div className="message-container flex flex-col relative w-full overflow-y-scroll sm:h-[340px] h-[60vh]" id="style-7">
-                    {messages.map((message, index) => (
+                {botRes&&<div className="message-container flex flex-col relative w-full overflow-y-scroll sm:h-[340px] h-[60vh]" id="style-7">
+                    {/* {messages.map((message, index) => (
                         <div
                             key={`message-${index}`}
                             className={`${message.type === "sent" ? 
@@ -236,8 +237,9 @@ const ChatBot = () => {
                                     : "text-gray-900"
                                 } sm:text-[0.8rem] text-[12px]`}>{message.text}</p>
                         </div>
-                    ))}
-                </div>
+                    ))} */}
+                    {botRes}
+                </div>}
                 <div className="w-full sm:h-[80px] bg-white  border-collapse border-gray-300 border-opacity-60 border-t-[1px] justify-center flex items-center">
                     <div className="text-[12px] sm:text-[0.8rem] bg-[#5C3BB9] w-full bg-opacity-25 h-[44px] justify-between items-center flex flex-row">
                     <input
