@@ -90,17 +90,30 @@ const EmployeeHistory = () => {
     const [searchInput, setSearchInput] = useState('');
     const [filteredData, setFilteredData] = useState(EmployeeHistoryData); // Initially, show all data
   
-    const handleSearch = () => {
-      if (searchInput.trim() === '') {
-        // If the search input is empty, show all data
-        setFilteredData(EmployeeHistoryData);
-      } else {
-        // Filter the data based on the empid
-        const filteredResults = EmployeeHistoryData.filter((emp) =>
-          emp.empid.toLowerCase().includes(searchInput.toLowerCase())
-        );
-        setFilteredData(filteredResults);
-      }
+    const handleSearch = async() => {
+        try {
+            const response = await axios.post('http://127.0.0.1:5000/api/emotion', formData, {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            });
+        setFilteredData(response.data.employee_data);
+  
+            console.log('Image captured and uploaded successfully:', response.data);
+            
+          } catch (error) {
+            console.error('Error uploading image:', error);
+          }
+    //   if (searchInput.trim() === '') {
+    //     // If the search input is empty, show all data
+    //     setFilteredData(EmployeeHistoryData);
+    //   } else {
+    //     // Filter the data based on the empid
+    //     const filteredResults = EmployeeHistoryData.filter((emp) =>
+    //       emp.empid.toLowerCase().includes(searchInput.toLowerCase())
+    //     );
+    //     setFilteredData(filteredResults);
+    //   }
     };
 
 
@@ -185,29 +198,29 @@ const EmployeeHistory = () => {
                                 <th className="font-medium w-1/12 text-left bg-slate-100 p-2">Date</th>
                                 <th className="font-medium w-1/12 text-left bg-slate-100 p-2">Time</th>
                                 <th className="font-medium w-1/12 text-left bg-slate-100 p-2">Mood</th>
-                                <th className="font-medium w-1/12 text-left bg-slate-100 p-2">Probability</th>
+                                {/* <th className="font-medium w-1/12 text-left bg-slate-100 p-2">Probability</th>
                                 <th className="font-medium w-1/12 text-left bg-slate-100 p-2">Interaction</th>
                                 <th className="font-medium w-1/12 text-left bg-slate-100 p-2">Depression</th>
                                 <th className="font-medium w-1/12 text-left bg-slate-100 p-2">Anxiety</th>
                                 <th className="font-medium w-1/12 text-left bg-slate-100 p-2">Stress</th>
-                                <th className="font-medium w-1/12 text-left bg-slate-100 p-2">DASS21 score</th>
+                                <th className="font-medium w-1/12 text-left bg-slate-100 p-2">DASS21 score</th> */}
                                 
                                 <tbody className="w-full">
 
 
                                 {filteredData.map((emp,index) => (
                                     <tr key={index} className="border-collapse border-b-[1px] row-span-5">
-                                        <td className='p-2'>{emp.empid}</td>
-                                        <td className='p-2'>{emp.empName}</td>
-                                        <td className='p-2'>{emp.date}</td>
+                                        <td className='p-2'>{emp.user_id}</td>
+                                        <td className='p-2'>{emp.user_name}</td>
+                                        <td className='p-2'>{emp.time_stamp}</td>
                                         <td className='p-2'>{emp.time}</td>
-                                        <td className='p-2' >{emp.mood}</td>
-                                        <td className='p-2'>{emp.probability}</td>
+                                        <td className='p-2' >{emp.emotion}</td>
+                                        {/* <td className='p-2'>{emp.probability}</td>
                                         <td className='p-2'>{emp.interaction}</td>
                                         <td className='p-2'>{emp.depression}</td>
                                         <td className='p-2'>{emp.anxiety}</td>
                                         <td className='p-2'>{emp.stress}</td>
-                                        <td className='p-2'>{emp.dss}</td>
+                                        <td className='p-2'>{emp.dss}</td> */}
                                     </tr>
                                 ))}
                                    
