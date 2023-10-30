@@ -21,7 +21,6 @@ const WebcamComponent = () => {
     };
 
     const captureImage = async () => {
-      navigate('/result');
       if (videoRef.current && videoRef.current.srcObject) {
         const canvas = document.createElement('canvas');
         canvas.width = 500;
@@ -59,11 +58,11 @@ const WebcamComponent = () => {
             navigate('/EmployeeDash')
           }
           if(role==='Consultant'){
-            navigate('/EmployeeDash')
+            navigate('/ConsultantHome')
 
           }
           if(role==='Admin'){
-            navigate('/EmployeeDash')
+            navigate('/AdminDashboard')
 
           }
         } catch (error) {
