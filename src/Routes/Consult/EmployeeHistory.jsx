@@ -5,6 +5,7 @@ import AddNewActivity from '../../Components/AddNewActivity';
 import ChatBot from '../../Components/chatbot';
 import TopNav from "../../Components/TopNav";
 import ConsultSideNav from '../../Components/ConsultSideNav';
+import axios from 'axios';
 
 const EmployeeHistory = () => {
    
@@ -92,7 +93,7 @@ const EmployeeHistory = () => {
   
     const handleSearch = async() => {
         try {
-            const response = await axios.post('http://127.0.0.1:5000/api/emotion', formData, {
+            const response = await axios.post('http://127.0.0.1:5000/api/emotion', {user_id:searchInput}, {
               headers: {
                 'Content-Type': 'multipart/form-data',
               },
