@@ -171,10 +171,13 @@ const ChatBot = () => {
       // Check if the "DASS21" button is active before making the API call
       if (activeButton === 'DASS21') {
         // Make the API call specific to the "New Button"
-        axios
-        .post('http://127.0.0.1:5000/api/dass_bot', {
-          reqData
-        })
+        const serverURL = 'http://127.0.0.1:5000/api/dass_bot';
+
+        axios.post(serverURL, reqData)
+        // axios
+        // .post('http://127.0.0.1:5000/api/dass_bot', {
+        //   reqData
+        // })
           .then((response) => {
   localStorage.setItem('dassValue', JSON.stringify(response.data));
             console.log('New Button API Response:', response.data);
