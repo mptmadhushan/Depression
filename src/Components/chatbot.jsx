@@ -87,7 +87,7 @@ const ChatBot = () => {
   const [isVoiceInputActive, setIsVoiceInputActive] = useState(false);
   const [voiceInputText, setVoiceInputText] = useState("");
   const [recognition, setRecognition] = useState(null);
-  const userData = JSON.parse(localStorage.getItem("dassValue"));
+  const userData = JSON.parse(localStorage.getItem("userData"));
   
   const reqData = {
     questions: [

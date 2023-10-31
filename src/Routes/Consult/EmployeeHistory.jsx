@@ -210,7 +210,7 @@ const EmployeeHistory = () => {
                                 <tbody className="w-full">
 
 
-                                {filteredData.map((emp,index) => (
+                                {filteredData?.map((emp,index) => (
                                     <tr key={index} className="border-collapse border-b-[1px] row-span-5">
                                         <td className='p-2'>{emp.user_id}</td>
                                         <td className='p-2'>{emp.user_name}</td>
