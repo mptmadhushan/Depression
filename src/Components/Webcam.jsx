@@ -51,6 +51,7 @@ const WebcamComponent = () => {
               'Content-Type': 'multipart/form-data',
             },
           });
+          localStorage.setItem('userData', JSON.stringify(response.data));
 
           console.log('Image captured and uploaded successfully:', response.data);
           const role = response.data.user_role

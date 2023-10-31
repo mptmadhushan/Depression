@@ -99,6 +99,7 @@ const EmployeeHistory = () => {
               },
             });
         setFilteredData(response.data.employee_data);
+        localStorage.setItem('emoData', JSON.stringify(response.data.employee_data));
   
             console.log('Image captured and uploaded successfully:', response.data);
             
